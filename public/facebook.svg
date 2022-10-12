@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Layer_1"
+   data-name="Layer 1"
+   viewBox="0 0 124.8 123.36"
+   version="1.1"
+   sodipodi:docname="facebook.svg"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview23"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="2.3329479"
+     inkscape:cx="-10.073092"
+     inkscape:cy="17.788652"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Layer_1" />
+  <defs
+     id="defs10">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect1752"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,17.574331,0,1 @ F,0,0,1,0,16.717047,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,15.43112,0,1 @ F,0,1,1,0,16.717047,0,1"
+       unit="px"
+       method="auto"
+       mode="F"
+       radius="0"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <style
+       id="style2">.cls-1,.cls-2{fill:none;}.cls-1{clip-rule:evenodd;}.cls-3{clip-path:url(#clip-path);}.cls-4{clip-path:url(#clip-path-2);}.cls-5{fill:#fff;}</style>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath863">
+      <rect
+         class="cls-2"
+         width="122.88"
+         height="122.31"
+         id="rect865"
+         x="0"
+         y="0"
+         transform="scale(1,-1)" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath869">
+      <path
+         class="cls-1"
+         d="m 27.75,0 h 67.38 a 27.83,27.83 0 0 0 27.75,-27.75 V -94.57 A 27.83,27.83 0 0 0 95.13,-122.31 H 27.75 A 27.83,27.83 0 0 0 0,-94.57 v 66.82 A 27.83,27.83 0 0 0 27.75,0 Z"
+         id="path871" />
+    </clipPath>
+  </defs>
+  <title
+     id="title12">facebook-app</title>
+  <path
+     id="rect1653"
+     style="opacity:1;fill:#1bae70;fill-opacity:0.988235;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+     d="m 0,17.574331 v 89.067999 a 16.717047,16.717047 45 0 0 16.717047,16.71705 l 35.81225,0 V 79.789062 H 36.929688 V 62.029297 H 52.529297 V 48.490234 c 0,-15.399984 9.210951,-23.90039 23.210937,-23.90039 4.606446,0.06387 9.202047,0.464679 13.75,1.199218 v 15.121094 h -7.800781 c -7.619992,0 -10,4.729849 -10,9.589844 v 11.529297 h 17.080078 l -2.71875,17.759765 H 71.689453 v 43.570318 h 37.680207 a 15.43112,15.43112 135 0 0 15.43112,-15.43112 l 0,-91.211213 A 16.717047,16.717047 45 0 0 108.08373,0 H 17.574331 A 17.574331,17.574331 135 0 0 0,17.574331 Z"
+     inkscape:path-effect="#path-effect1752"
+     inkscape:original-d="M 0,0 V 123.35938 H 52.529297 V 79.789062 H 36.929688 V 62.029297 H 52.529297 V 48.490234 c 0,-15.399984 9.210951,-23.90039 23.210937,-23.90039 a 94.45,94.45 0 0 1 13.75,1.199218 v 15.121094 h -7.800781 c -7.619992,0 -10,4.729849 -10,9.589844 v 11.529297 h 17.080078 l -2.71875,17.759765 H 71.689453 V 123.35938 H 124.80078 V 0 Z"
+     inkscape:export-filename="facebook.svg"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+</svg>

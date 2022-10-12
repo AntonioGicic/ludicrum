@@ -1,0 +1,69 @@
+<%- include('partials/header.ejs') %>
+    <%- include('partials/backgroundImages.ejs') %>
+        <%- include('partials/navbar.ejs') %>
+            <!-- start of "publish message" -->
+            <div id="welcome-message" class="d-flex align-items-center">
+                <div class="container my-auto">
+                    <h2 class="text-center fw-bold text-wrap">Pregledajte detalje o događaju ili <br> ga podijelite na
+                        društvenim mrežama</h2>
+                    <div class="green-line mx-auto"></div>
+                </div>
+            </div>
+            <!-- end of "publish message" -->
+            <!-- start of details -->
+            <div class="container" id="details-div">
+                <div class="mx-auto event-display col-11 col-xl-8 container">
+                    <h4 class="row h4 align-items-center justify-content-center m-3 text-center">
+                        <%= dogadaj.title %>
+                    </h4>
+                    <div class="row align-items-center justify-content-between m-3 fs-6 items" style="color: #1bae70">
+                        <p class="text-center col-12 col-lg-4">Mjesto: <a
+                                href="/dogadaji?city=<%= dogadaj.city %>&date=&category=">
+                                <%= dogadaj.city %>
+                            </a>
+                        </p>
+                        <p class="text-center col-12 col-lg-4">Datum:
+                            <%= dogadaj.dateStart.toISOString().slice(0,10) %>
+                                <% const start=dogadaj.dateStart.toISOString().slice(0,10); %>
+                                    <% const end=dogadaj.dateEnd.toISOString().slice(0,10); %>
+                                        <% if(start !==end) { %>
+                                            <br>
+                                            do
+                                            <%- dogadaj.dateEnd.toISOString().slice(0,10) %>
+                                                <% } %>
+                        </p>
+                        <p class="text-center col-12 col-lg-4">Kategorija:
+                            <a href="/dogadaji?city=&date=&category=<%=dogadaj.category%>">
+                                <%= dogadaj.category %>
+                            </a>
+                        </p>
+                    </div>
+                    <p class="row fs-5 m-3">
+                        <%= dogadaj.location %>
+                    </p>
+                    <p class="row fs-6 m-3">
+                        <%= dogadaj.description %>
+                    </p>
+                    <div class="row align-items-center justify-content-between m-2 mt-5">
+                        <p class="text-muted col-12 col-lg-4 text-start">
+                            Objavljeno: <%= dogadaj.datePublished.toISOString().slice(0,10) %>
+                        </p>
+                        <div class="col-12 col-lg-8 text-end container">
+                            <div class="row justify-content-end align-items-end">
+                                <span id="publishSpan" class="publish-links d-block"
+                                    style="width: fit-content; margin: 5px;">Kopiraj
+                                    link</span>
+                                <a id="publishA" href="#" target="_blank" class="publish-links col-12 col-lg-6"
+                                    style="width: fit-content; margin: 5px;">Podjeli
+                                    događaj na facebook</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-center justify-content-center align-items-center m-4 fs-5">
+                        <a href="#" onclick="history.back()"
+                            style="text-decoration: none; color: rgb(183, 21, 21);">Nazad &#8592</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end of details -->
+            <%- include('partials/footer.ejs') %>

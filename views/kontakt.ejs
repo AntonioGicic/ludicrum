@@ -1,0 +1,54 @@
+<%- include('partials/header.ejs') %>
+    <%- include('partials/backgroundImages.ejs') %>
+        <%- include('partials/navbar.ejs') %>
+            <!-- start of "contact us down" -->
+            <div class="contactUs-message container my-auto d-flex flex-column justify-content-center align-items-center"
+                style="position: relative; height: 90vh">
+                <h1 class="text-center fw-bold">KONTAKTIRAJTE NAS!</h1>
+                <div class="green-line mx-auto"></div>
+                <h2 class="text-center fs-4">Ukoliko imate bilo kakvih pitanja, pohvala ili prigovora na rad stranice
+                    <br>
+                    obratite nam se dolje navedenim putem i odgovorit <br> ćemo Vam u što kraćem vremenu.
+                </h2>
+            </div>
+            <!-- end of "contact us down" -->
+            <!-- start of contact form -->
+            <div class="container contact-form-div">
+                <form class="mx-auto needs-validation" style="max-width: 50vw" action="/kontakt" method="post"
+                    novalidate>
+                    <div class="mb-3">
+                        <label for="contactName" class="form-label">Ime i prezime</label>
+                        <input type="text" class="form-control" id="contactName" name="contactName" required>
+                        <div class="invalid-feedback">
+                            Molimo upišite ispravno ime i prezime.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactSubject" class="form-label">Kratki opis</label>
+                        <input type="text" class="form-control" id="contactSubject" name="contactSubject" required>
+                        <div class="invalid-feedback">
+                            Molimo upišite ispravan naziv predmeta.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="contactEmail" name="contactEmail" required>
+                        <div class="invalid-feedback">
+                            Molimo upišite ispravnu email adresu.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactMessage" class="form-label">Poruka</label>
+                        <textarea class="form-control" id="contactMessage" name="contactMessage" rows="8" required
+                            style="resize: none"></textarea>
+                        <div class="invalid-feedback">
+                            Molimo upišite razlog Vašeg kontaktiranja.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-success mx-auto d-block btn-about-us mb-5">POŠALJI</button>
+                    </div>
+                </form>
+            </div>
+            <!-- end of contact form -->
+            <%- include('partials/footer.ejs') %>

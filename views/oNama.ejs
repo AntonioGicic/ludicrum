@@ -1,0 +1,58 @@
+<%- include('partials/header.ejs') %>
+    <%- include('partials/backgroundImages.ejs') %>
+        <%- include('partials/navbar.ejs') %>
+            <!-- start of "what is Ludicrum" -->
+            <div id="welcome-message" class="d-flex align-items-center">
+                <div class="container my-auto">
+                    <h1 class="text-center fw-bold">ŠTO JE LUDICRUM?</h1>
+                    <div class="green-line mx-auto"></div>
+                    <img class="arrow mx-auto d-block bounce" src="/downArrow.svg" alt="down arrow">
+                </div>
+            </div>
+            <!-- end of "what is Ludicrum" -->
+            <!-- start of page main content -->
+            <div class="container about-main">
+                <div class="row">
+                    <div class="col-12 col-xl-6 d-flex flex-column justify-content-center about-mission"
+                        style="color: #212529">
+                        <h3 class="fw-bolder">
+                            NAŠA MISIJA
+                        </h3>
+                        <div class="green-line"></div>
+                        <p>Ludicrum je potpuno besplatna web aplikacija koja služi za objavljivanje i pretragu svih
+                            vrsta javnih događaja na teritoriju Republike Hrvatske. Namijenjena je osobama svih uzrasta,
+                            od naših najmlađih do najstarijih, te izrađena za brzo i jednostavno korištenje. Uporabom
+                            Ludicruma potičemo zaštitu okoliša te smanjujemo nepotrebno korištenje papira i svih vrsta
+                            papirnatih oglasa. Molimo Vas, prije korištenja Ludicruma obavezno pročitajte <a
+                                href="uvjetiKoristenja" style="text-decoration: none; color: #1bae70">Uvjete korištenja
+                                i
+                                pravila privatnosti</a>.</p>
+                    </div>
+                    <div class="col-12 col-xl-6 d-flex justify-content-center align-items-center">
+                        <img src="/Croatia.png" class="croatia-image" style="min-width: 50px; padding-top: 20px;"
+                            alt="croatia">
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 20vh; margin-bottom: 20vh;">
+                    <div class="col-12 col-xl-6 d-flex flex-column order-xl-2 justify-content-center about-mission"
+                        style="color: #212529">
+                        <h3 class="fw-bolder">
+                            ZAŠTO KORISTITI
+                            LUDICRUM?
+                        </h3>
+                        <div class="green-line"></div>
+                        <ul>
+                            <li>Jednostavan dizajn omogućava brzo snalaženje i korištenje web aplikacije</li>
+                            <li>Sve vrste događaja na jednom mjestu</li>
+                            <li>Potpuno besplatna web aplikacija</li>
+                            <li>Bez dosadnih reklama</li>
+                            <li>Odličan tim ljudi brine se da svaka objava bude vidljiva unutar 24 sata</li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-xl-6 d-flex order-xl-1 justify-content-center align-items-center">
+                        <img src="/window.jpg" class="window-image" style="max-height: 500px;" alt="window">
+                    </div>
+                </div>
+            </div>
+            <!-- end of page main content -->
+            <%- include('partials/footer.ejs') %>

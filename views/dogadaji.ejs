@@ -1,0 +1,174 @@
+<%- include('partials/header.ejs') %>
+    <%- include('partials/backgroundImages.ejs') %>
+        <%- include('partials/navbar.ejs') %>
+            <!-- start of "publish message" -->
+            <div id="welcome-message" class="d-flex align-items-center">
+                <div class="container my-auto">
+                    <h2 class="text-center fw-bold text-wrap">
+                        <%= firstText %>
+                    </h2>
+                    <div class="green-line mx-auto"></div>
+                    <p class="fs-6 text-center text-wrap event-count fw-bolder">
+                        <%- eventNumber %>
+                    </p>
+                </div>
+            </div>
+            <!-- end of "publish message" -->
+            <!-- start of filter -->
+            <div class="container filter-box">
+                <div class="row d-flex align-items-center justify-content-center" id="filter-form" action=""
+                    method="get">
+                    <div class="col-lg-3">
+                        <label for="filter-city" class="form-label">Grad, općina ili naselje</label>
+                        <input list="datalistCity" class="form-control" name="filterCity" id="filter-city"
+                            onchange="resetIfNoCity(this);">
+                        <%- include('partials/datalistCity.ejs') %>
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="filter-date" class="form-label">Datum</label>
+                        <input id="filter-date" type="date" value="<%= new Date().toISOString().split(" T")[0] %>"
+                        min="<%= new Date().toISOString().split("T")[0] %>"
+                            class="form-control">
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="filter-category" class="form-label">Kategorija</label> <br>
+                        <select class="form-control" id="filter-category">
+                            <option selected disabled value="">Odaberite iz ponuđenog...</option>
+                            <option value="Glazba">Glazba</option>
+                            <option value="Sport">Sport</option>
+                            <option value="Umjetnost">Umjetnost</option>
+                            <option value="Edukacija">Edukacija</option>
+                            <option value="Djeca">Djeca</option>
+                            <option value="Ostalo">Ostalo</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2 d-flex align-items-center justify-content-center">
+                        <button type="submit" id="filter-btn" class="btn-about-us"
+                            style="margin-top: 20px; color: #f4f6f4; border: 1px solid #198754;">
+                            <a id="findQuery" style="text-decoration: none; color: #f4f6f4" href="#">
+                                FILTRIRAJ</a></button>
+                    </div>
+                </div>
+            </div>
+            <!-- end of filter -->
+            <!-- start of events -->
+            <div class="container all-events-box">
+                <h2 class="h3 text-center fw-bolder mx-auto" id="newEventsText" style="max-width: 800px">
+                    <%= text %>
+                </h2>
+                <div id="newEventsLine"></div>
+                <div class="row d-flex align-items-center justify-content-center">
+                    <% for (let event of events) { %>
+                        <div id="eventCard" class="card col-11 col-md-5 col-xl-4 card-animation">
+                            <div class="card-body">
+                                <h5 class="card-title text-center fw-bolder">
+                                    <%- event.title %>
+                                </h5>
+                                <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center"
+                                    style="color: #1bae70">
+                                    <p class="text-center text-lg-start"> <a
+                                            href="/dogadaji?city=<%= event.city %>&date=&category="
+                                            style="text-decoration: none; color: #1bae70" class="hovSt">
+                                            <%- event.city %>
+                                        </a> </p>
+                                    <p class="text-muted fw-bold d-none d-lg-block px-lg-2">&#124</p>
+                                    <p class="text-center">
+                                        <a href="/dogadaji?city=&date=&category=<%=event.category %>"
+                                            style="text-decoration: none; color: #1bae70" class="hovSt">
+                                            <%- event.category %>
+                                        </a>
+                                    </p>
+                                    <p class="text-muted fw-bold d-none d-lg-block px-lg-2">&#124</p>
+                                    <p class="text-nowrap text-center text-lg-end">
+                                        <%- event.dateStart.toISOString().slice(0,10) %>
+                                            <% const start=event.dateStart.toISOString().slice(0,10); %>
+                                                <% const end=event.dateEnd.toISOString().slice(0,10); %>
+                                                    <% if(start !==end) { %>
+                                                        do
+                                                        <%- event.dateEnd.toISOString().slice(0,10) %>
+                                                            <% } %>
+                                    </p>
+                                </div>
+                                <p class="fw-bolder">
+                                    <%- event.location %>
+                                </p>
+                                <p class="card-text">
+                                    <%- event.description %>
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    <p class="text-muted text-start">Objavljeno:
+                                        <%- event.datePublished.toISOString().slice(0,10) %>
+                                    </p>
+                                    <a id="details" href="/dogadaji/<%= event._id %>"
+                                        style="text-decoration: none; color: rgb(29, 29, 199)">Detalji
+                                        &#8594</a>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+            <!-- end of events -->
+            <!-- start of footer -->
+            <div class="container-fluid footer"
+                style="background-color: #171b17; margin-top: 20vh; padding-bottom: 3vh;">
+                <div class="row social-media">
+                    <div class="container d-flex my-1 justify-content-center justify-content-center">
+                        <a href="https://www.facebook.com/"><img src="/facebook.svg" alt="facebook" style="height: 20px"
+                                class="d-inline-block"></a>
+                        <a href="https://www.instagram.com/"><img src="/instagram.svg" alt="instagram"
+                                style="height: 20px" class="d-inline-block"></a>
+                        <a href="https://www.youtube.com/"><img src="/youtube.svg" alt="youtube" style="height: 20px"
+                                class="d-inline-block"></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="text-center my-auto">© 2022 Ludicrum.com.hr sva prava pridržana.</p>
+                </div>
+                <div class="row">
+                    <p class="text-center my-auto terms-of-use-footer"><a href="/uvjetiKoristenja"
+                            style="text-decoration: none; color: #1bae70;">Uvjeti korištenja i
+                            pravila
+                            privatnosti</a>
+                    </p>
+                </div>
+            </div>
+            <!-- end of footer -->
+            <script src="/js/bootstrap.min.js"></script>
+            <script src="/js/custom.js"></script>
+            <script type="text/javascript">
+                findQuery.onclick = () => {
+                    const cityInput = document.getElementById('filter-city').value;
+                    const dateInput = document.getElementById('filter-date').value;
+                    const categoryInput = document.getElementById('filter-category').value;
+                    findQuery.href = "/dogadaji?city=" + cityInput + "&date=" + dateInput + "&category=" + categoryInput;
+                };
+            </script>
+            <script type="text/javascript">
+                window.onload = () => {
+                    const newEventsText = document.getElementById('newEventsText').innerText;
+                    const newEventsLine = document.getElementById('newEventsLine');
+                    if (newEventsText === "Najnoviji događaji") {
+                        newEventsLine.classList.add("green-line");
+                        newEventsLine.classList.add("mx-auto");
+                    } else if (newEventsText === "") {
+                        newEventsLine.classList.remove("green-line");
+                        newEventsLine.classList.remove("mx-auto");
+                    }
+                }
+            </script>
+            <script type="text/javascript">
+                const allEventsAnimation = document.querySelectorAll('.card-animation');
+                for (let i = 0; i < allEventsAnimation.length; i++) {
+                    allEventsAnimation[i].style.animationName = "slideIn";
+                    allEventsAnimation[i].style.webkitAnimationDuration = "1s";
+                    allEventsAnimation[i].style.animationDuration = "1s";
+                    allEventsAnimation[i].style.webkitAnimationFillMode = "both";
+                    allEventsAnimation[i].style.animationFillMode = "both";
+                    allEventsAnimation[i].style.animationIterationCount = "1";
+                    allEventsAnimation[i].style.animationDelay = i / 3 + 0.1 + "s";
+                }
+            </script>
+            </body>
+
+            </html>

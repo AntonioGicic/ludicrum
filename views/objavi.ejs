@@ -1,0 +1,205 @@
+<%- include('partials/header.ejs') %>
+    <%- include('partials/backgroundImages.ejs') %>
+        <%- include('partials/navbar.ejs') %>
+            <!-- start of "publish message" -->
+            <div id="welcome-message" class="d-flex align-items-center">
+                <div class="container my-auto">
+                    <h2 class="text-center fw-bold text-wrap">Ispunite potrebne detalje u formularu.</h2>
+                    <div class="green-line mx-auto"></div>
+                </div>
+            </div>
+            <!-- end of "publish message" -->
+            <!-- start of publish box -->
+            <div class="container publish-box">
+                <form action="/uspjesnaObjava" method="post" class="publish-form mx-auto needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Naziv</label>
+                        <input type="text" class="form-control" id="title" name="event[title]" required>
+                        <div class="invalid-feedback">
+                            Molimo upišite ispravan naziv događaja.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="city" class="form-label">Grad, općina ili naselje</label>
+                        <input list="datalistCity" class="form-control" id="city" name="event[city]"
+                            onchange="resetIfNoCity(this)" required>
+                        <%- include('partials/datalistCity.ejs') %>
+                            <div class="invalid-feedback">
+                                Molimo odaberite jedno od ponuđenih naziva. Ukoliko ne možete pronaći Vaše mjesto,
+                                odaberite
+                                općinu ili najbliže ponuđeno mjesto održavanju događaja.
+                            </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Točna lokacija</label>
+                        <input type="text" class="form-control" id="location" name="event[location]" required>
+                        <div class="invalid-feedback">
+                            Molimo upišite točnu lokaciju održavanja događaja.
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value="true" id="multipleDays"
+                            name="multipleDays">
+                        <label class="form-check-label" for="multipleDays">
+                            Događaj traje duže od jednoga dana
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dateStart" class="form-label">Datum početka</label>
+                        <input id="dateStart" name="event[dateStart]" min="2022-09-07" type="date" class="form-control"
+                            required>
+                        <div class="invalid-feedback">
+                            Molimo odaberite datum održavanja događaja ili datum početka događaja ako traje više od
+                            jednoga dana.
+                        </div>
+                    </div>
+                    <div class="mb-3" id="divFinish" style="display: none">
+                        <label for="dateEnd" class="form-label">Datum završetka</label>
+                        <input id="dateEnd" name="event[dateEnd]" min="2022-09-07" type="date" class="form-control">
+                        <div class="invalid-feedback">
+                            Molimo odaberite zadnji dan održavanja događaja.
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <input type="date" id="datePublished" name="event[datePublished]" hidden>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Kategorija</label> <br>
+                        <select class="form-control" id="category" name="event[category]" required>
+                            <option selected disabled value="">Odaberite iz ponuđenog...</option>
+                            <option value="Glazba">Glazba</option>
+                            <option value="Sport">Sport</option>
+                            <option value="Umjetnost">Umjetnost</option>
+                            <option value="Edukacija">Edukacija</option>
+                            <option value="Djeca">Djeca</option>
+                            <option value="Ostalo">Ostalo</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Molimo odaberite jednu od ponuđenih kategorija.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Opis</label>
+                        <textarea class="form-control" id="description" name="event[description]" rows="5" required
+                            style="resize: none"></textarea>
+                        <div class="invalid-feedback">
+                            Molimo upišite dodatne bitne informacije o događaju kao što su vrijeme početka, cijena
+                            ulaznice, itd.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="event[email]" required>
+                        <div class="invalid-feedback">
+                            Molimo upišite ispravnu email adresu.
+                        </div>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value="true" id="confirmed"
+                            name="event[confirmed]" required>
+                        <label class="form-check-label" for="confirmed">
+                            Pročitao/la sam i slažem se sa Uvjetima korištenja i pravilima privatnosti
+                        </label>
+                        <div class="invalid-feedback">
+                            Ukoliko želite objaviti događaj morate prihvatiti Uvjete korištenja i pravila
+                            privatnosti.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" id="sendBtn" class="btn btn-success mx-auto d-block btn-about-us mb-5"
+                            style="margin-top: 50px">OBJAVI</button>
+                    </div>
+                </form>
+            </div>
+            <!-- end of publish box -->
+            <!-- start of footer -->
+            <div class="container-fluid footer"
+                style="background-color: #171b17; margin-top: 20vh; padding-bottom: 3vh;">
+                <div class="row social-media">
+                    <div class="container d-flex my-1 justify-content-center">
+                        <a href="https://www.facebook.com/"><img src="/facebook.svg" alt="facebook" style="height: 20px"
+                                class="d-inline-block"></a>
+                        <a href="https://www.instagram.com/"><img src="/instagram.svg" alt="instagram"
+                                style="height: 20px" class="d-inline-block"></a>
+                        <a href="https://www.youtube.com/"><img src="/youtube.svg" alt="youtube" style="height: 20px"
+                                class="d-inline-block"></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="text-center my-auto">© 2022 Ludicrum.com.hr sva prava pridržana.</p>
+                </div>
+                <div class="row">
+                    <p class="text-center my-auto terms-of-use-footer"><a href="/uvjetiKoristenja"
+                            style="text-decoration: none; color: #1bae70;">Uvjeti korištenja i
+                            pravila
+                            privatnosti</a>
+                    </p>
+                </div>
+            </div>
+            <!-- end of footer -->
+            <script src="/js/bootstrap.min.js"></script>
+            <script src="/js/custom.js"></script>
+            <script type="text/javascript">
+                window.onload = () => {
+                    const todayNew = new Date();
+                    let dd = todayNew.getDate();
+                    let mm = todayNew.getMonth() + 1;
+                    const yyyy = todayNew.getFullYear();
+                    if (dd < 10) {
+                        dd = '0' + dd
+                    }
+                    if (mm < 10) {
+                        mm = '0' + mm
+                    }
+                    const thisDate = yyyy + '-' + mm + '-' + dd;
+                    document.getElementById('dateStart').min = thisDate;
+                    document.getElementById('dateEnd').min = thisDate;
+                    document.getElementById('datePublished').value = thisDate;
+                };
+            </script>
+            <script type="text/javascript">
+                const multipleDays = document.querySelector('#multipleDays');
+                const divFinish = document.querySelector('#divFinish');
+                const dateEndInput = document.querySelector('#dateEnd');
+                multipleDays.addEventListener("change", () => {
+                    if (multipleDays.checked == true) {
+                        divFinish.style.display = 'block';
+                        dateEndInput.required = true;
+                    } else {
+                        divFinish.style.display = 'none';
+                        dateEndInput.required = false;
+                    }
+                });
+            </script>
+            <script type="text/javascript">
+                const sendBtn = document.querySelector('#sendBtn');
+                sendBtn.addEventListener("click", () => {
+                    const dtSt = document.querySelector('#dateStart');
+                    const dtEnd = document.querySelector('#dateEnd');
+                    const divFinish = document.querySelector('#divFinish');
+                    if (divFinish.style.display === 'none') {
+                        dtEnd.value = dtSt.value;
+                    }
+                });
+            </script>
+            </body>
+
+            </html>

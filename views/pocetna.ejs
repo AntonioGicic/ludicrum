@@ -1,0 +1,81 @@
+<%- include('partials/header.ejs') %>
+    <%- include('partials/backgroundImages.ejs') %>
+        <%- include('partials/navbar.ejs') %>
+            <!-- start of welcome message -->
+            <div id="welcome-message" class="d-flex align-items-center">
+                <div class="container my-auto">
+                    <h1 class="text-center fw-bold">DOBRODOŠLI NA LUDICRUM!</h1>
+                    <div class="green-line mx-auto"></div>
+                    <h2 class="text-center fs-4">Pronađite sve vrste zabavnih događaja u Vašoj blizini ili brzo i
+                        jednostavno
+                        <br>
+                        objavite svoj događaj
+                    </h2>
+                    <button type="button" class="btn btn-success mx-auto d-block btn-about-us btn-shake"><a
+                            style="text-decoration: none; color: #f4f6f4;" href="/oNama">O
+                            NAMA</a></button>
+                </div>
+            </div>
+            <!-- start of environmental message -->
+            <div class="container" id="environmental-message">
+                <div class="green-line mx-auto"></div>
+                <h2 class="text-center fs-3 zoomInAndOut">Uporabom Ludicruma potičete zaštitu šuma i okoliša <br>
+                    smanjujući uporabu
+                    promidžbenih plakata.</h2>
+                <div class="green-line mx-auto"></div>
+            </div>
+            <!-- home page main article start -->
+            <div id="main-article" class="container h-auto" style="margin-top: 50px; margin-bottom: 50px">
+                <div style="margin-bottom: 25vh" class="row d-flex justify-content-center home-section-find-publish">
+                    <div class="col-xl-6 d-flex align-items-center justify-content-evenly">
+                        <img class="home-images" src="/img-find.jpg" alt="find event">
+                    </div>
+                    <div class="col-8 col-xl-5 mt-5 mt-xl-0 d-flex align-items-center justify-content-evenly">
+                        <div>
+                            <h3 class="text-center fs-5 fw-bolder">Provjerite što se događa u Vašoj blizini!</h3>
+                            <p class="text-center fs-5">Dosadno vam je, tražite zabavu ili možda želite vašeg partera
+                                iznenaditi
+                                odlaskom na neki party?
+                                Pregledajte što se događa oko vas klikom na gumb!</p>
+                            <button class="btn btn-success mx-auto d-block btn-about-us btn-shakeAndRotate"
+                                style="margin-top: 30px"><a style="text-decoration: none; color: #f4f6f4;"
+                                    href="/dogadaji">PREGLEDAJ
+                                    &#8680</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 25vh" class="row d-flex justify-content-center home-section-find-publish">
+                    <div class="col-xl-6 d-flex align-items-center justify-content-evenly order-xl-2">
+                        <img class="home-images" src="/img-publish.jpg" alt="publish event">
+                    </div>
+                    <div
+                        class="col-8 col-xl-5 d-flex align-items-center justify-content-evenly mt-5 mt-xl-0 order-xl-1">
+                        <div>
+                            <h3 class="text-center fs-5 fw-bolder">Objavite vaš događaj potpuno besplatno!</h3>
+                            <p class="text-center fs-5">U Vašem klubu nastupa svima omiljeni DJ, organizirate sportski
+                                turnir
+                                ili možda organizirate umjetničku izložbu?
+                                Klikom na gumb jednostavno i brzo objavite događaj na Ludicrum!</p>
+                            <button class="btn btn-success mx-auto d-block btn-about-us btn-shakeAndRotate"
+                                style="margin-top: 30px"><a style="text-decoration: none; color: #f4f6f4;"
+                                    href="/objavi">OBJAVI
+                                    &#8680</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- home page main article end -->
+            <!-- start of questions, thanks or complaints -->
+            <div class="container" id="questions-thanks-complaints">
+                <div class="green-line mx-auto"></div>
+                <h2 class="text-center fs-5 mt-5 mb-4">Nadamo se da uživate u Ludicrumu! <br>
+                    Ukoliko imate bilo kakvih pitanja, pohvala ili prigovora na rad stranice <br> obratite nam se klikom
+                    na
+                    gumb.
+                </h2>
+                <button class="btn btn-success mx-auto d-block btn-about-us mb-5" style="margin-top: 30px"><a
+                        style="text-decoration: none; color: #f4f6f4;" href="/kontakt">KONTAKT</a></button>
+                <div class="green-line mx-auto"></div>
+            </div>
+            <!-- end of questions, thanks or complaints -->
+            <%- include('partials/footer.ejs') %>
