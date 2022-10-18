@@ -1,11 +1,6 @@
-@font-face {
-    font-family: MaliFontLight300;
-    src: url("../Mali-Light.ttf");
-}
-
 body {
     background-color: #dbffef;
-    font-family: MaliFontLight300, cursive, Arial;
+    font-family: "Comic Sans MS", "Comic Sans", cursive, Arial;
 }
 
 nav,
