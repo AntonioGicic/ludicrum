@@ -1,6 +1,6 @@
 body {
     background-color: #dbffef;
-    font-family: "Comic Sans MS", "Comic Sans", "Arial", "Verdana";
+    font-family: "Comic Sans MS", "Comic Sans", cursive, Arial;
 }
 
 nav,
@@ -179,7 +179,7 @@ nav,
 
 #environmental-message {
     position: relative;
-    margin-top: 90vh;
+    margin-top: 100vh;
     left: 0;
     right: 0;
     margin-left: auto;
@@ -277,7 +277,12 @@ nav,
 
 .about-main {
     position: relative;
-    margin-top: 100vh;
+    margin-top: 110vh;
+}
+
+.about-mission {
+    padding-left: 100px;
+    padding-right: 100px;
 }
 
 .window-image {
@@ -364,7 +369,7 @@ nav,
 
 .filter-box {
     position: relative;
-    margin-top: 90vh;
+    margin-top: 95vh;
     max-width: 100vw;
     overflow: hidden;
     padding: 20px;
@@ -416,7 +421,7 @@ nav,
 
 #publishA {
     background-color: #4267B2;
-    border-color: #f4f6f4;
+    border-color: #898F9C;
     color: #f4f6f4;
 }
 
@@ -584,37 +589,4 @@ nav,
 
 .event-count {
     color: #f4f6f4;
-}
-
-.sorting-button {
-    text-decoration: none;
-    color: #f4f6f4;
-    background-color: #1bae70;
-    padding: 10px;
-    border: 1px solid #168859;
-    border-radius: 7px;
-    cursor: pointer;
-    -webkit-box-shadow: 10px 10px 15px -4px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 10px 15px -4px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 10px 15px -4px rgba(0, 0, 0, 0.75);
-}
-
-.sorting-button:hover {
-    color: #f4f6f4;
-    scale: 1.05;
-    background-color: #1a9d66;
-}
-
-.sorting-disabled {
-    cursor: default;
-    background-color: #1a9d66;
-    -webkit-box-shadow: inset 0px -1px 17px -6px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: inset 0px -1px 17px -6px rgba(0, 0, 0, 0.75);
-    box-shadow: inset 0px -1px 17px -6px rgba(0, 0, 0, 0.75);
-    scale: 0.9;
-}
-
-.sorting-disabled:hover {
-    background-color: #1a9d66;
-    scale: 0.9;
 }
