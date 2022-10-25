@@ -41,12 +41,13 @@
                     <p class="row fs-5 m-3">
                         <%= dogadaj.location %>
                     </p>
-                    <p class="row fs-6 m-3">
+                    <p class="row fs-6 m-3" style="white-space: pre-line">
                         <%= dogadaj.description %>
                     </p>
                     <div class="row align-items-center justify-content-between m-2 mt-5">
                         <p class="text-muted col-12 col-lg-4 text-start">
-                            Objavljeno: <%= dogadaj.datePublished.toISOString().slice(0,10) %>
+                            Objavljeno: <%= dogadaj.datePublished.toISOString().slice(0,10) %> <br>
+                                Broj pregleda: <%= dogadaj.viewNumber %>
                         </p>
                         <div class="col-12 col-lg-8 text-end container">
                             <div class="row justify-content-end align-items-end">

@@ -19,6 +19,10 @@ const EventSchema = new Schema({
         type: Boolean,
         default: false
     },
+    viewNumber: {
+        type: Number,
+        default: 0
+    },
 });
 
 module.exports = mongoose.model('Event', EventSchema);

@@ -19,6 +19,7 @@ mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true }).the
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('X-HTTP-Method-Override'))
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
@@ -28,6 +29,7 @@ cron.schedule('* * 1 * * *', async () => {
         const cutoff = new Date();
         cutoff.setDate(cutoff.getDate());
         await Event.deleteMany({ dateEnd: { $lt: cutoff } });
+        console.log("obrisano");
     } catch (error) {
         console.log("Nažalost došlo je do pogreške.", error);
     }
@@ -45,7 +47,7 @@ app.post('/uspjesnaObjava', async (req, res) => {
 
 app.get('/', (req, res) => {
     try {
-        res.render('pocetna', { title: "Ludicrum - Početna stranica", description: "Ludicrum nudi vrlo jednostavnu i potpuno besplatnu uslugu pregledavanja i objavljivanja raznih zabavnih događaja na području cijele Republike Hrvatske" });
+        res.render('pocetna', { title: "Ludicrum", description: "Ludicrum nudi vrlo jednostavnu i potpuno besplatnu uslugu pregledavanja i objavljivanja raznih zabavnih događaja na području cijele Republike Hrvatske" });
     } catch (error) {
         res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
     }
@@ -61,7 +63,7 @@ app.get('/dogadaji', async (req, res) => {
                 const eventNumber = "Ukupno objavljenih događaja: " + eventNumber1;
                 const text = "Najnoviji događaji";
                 const firstText = "Pretražite događaje prema mjestu, datumu i/ili kategoriji";
-                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Ludicrum - Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
+                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
             } catch (error) {
                 res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
             }
@@ -77,7 +79,7 @@ app.get('/dogadaji', async (req, res) => {
                 const eventNumber = "Pronađenih događaja: " + eventNumber1;
                 const firstText = "Pregled događaja prema zadanim filterima:";
                 const text = ""
-                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Ludicrum - Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
+                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
             } catch (error) {
                 res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
             }
@@ -88,7 +90,7 @@ app.get('/dogadaji', async (req, res) => {
                 const eventNumber = "Pronađenih događaja: " + eventNumber1;
                 const text = ""
                 const firstText = "Pregled događaja prema zadanim filterima:";
-                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Ludicrum - Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
+                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
             } catch (error) {
                 res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
             }
@@ -102,9 +104,9 @@ app.get('/dogadaji', async (req, res) => {
                     published: 'true', dateStart: { $lte: stringDate }, dateEnd: { $gte: stringDate }
                 });
                 const eventNumber = "Pronađenih događaja: " + eventNumber1;
-                const text = ""
+                const text = "";
                 const firstText = "Pregled događaja prema zadanim filterima:";
-                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Ludicrum - Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
+                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
             } catch (error) {
                 res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
             }
@@ -115,7 +117,7 @@ app.get('/dogadaji', async (req, res) => {
                 const eventNumber = "Pronađenih događaja: " + eventNumber1;
                 const text = "";
                 const firstText = "Pregled događaja prema zadanim filterima:";
-                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Ludicrum - Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
+                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
             } catch (error) {
                 res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
             }
@@ -131,7 +133,7 @@ app.get('/dogadaji', async (req, res) => {
                 const eventNumber = "Pronađenih događaja: " + eventNumber1;
                 const text = "";
                 const firstText = "Pregled događaja prema zadanim filterima:";
-                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Ludicrum - Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
+                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
             } catch (error) {
                 res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
             }
@@ -142,7 +144,7 @@ app.get('/dogadaji', async (req, res) => {
                 const eventNumber = "Pronađenih događaja: " + eventNumber1;
                 const text = "";
                 const firstText = "Pregled događaja prema zadanim filterima:";
-                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Ludicrum - Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
+                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
             } catch (error) {
                 res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
             }
@@ -154,7 +156,7 @@ app.get('/dogadaji', async (req, res) => {
                 const eventNumber = "Pronađenih događaja: " + eventNumber1;
                 const text = "";
                 const firstText = "Pregled događaja prema zadanim filterima:";
-                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Ludicrum - Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
+                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
             } catch (error) {
                 res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
             }
@@ -165,9 +167,24 @@ app.get('/dogadaji', async (req, res) => {
     }
 });
 
+app.get('/dogadaji?sort=view', async (req, res) => {
+    const events = await Event.find({ published: 'true' }).sort('viewNumber').limit(10);
+    console.log(events);
+    res.json({ events: events });
+});
+
+
+
+
+
+
+
+
+
+
 app.get('/oNama', (req, res) => {
     try {
-        res.render('oNama', { title: "Ludicrum - O nama", description: "Ludicrum nudi vrlo jednostavnu i potpuno besplatnu uslugu pregledavanja i objavljivanja raznih zabavnih događaja na području cijele Republike Hrvatske" });
+        res.render('oNama', { title: "O nama", description: "Ludicrum nudi vrlo jednostavnu i potpuno besplatnu uslugu pregledavanja i objavljivanja raznih zabavnih događaja na području cijele Republike Hrvatske" });
     } catch (error) {
         res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
     }
@@ -175,7 +192,7 @@ app.get('/oNama', (req, res) => {
 
 app.get('/kontakt', (req, res) => {
     try {
-        res.render('kontakt', { title: "Ludicrum - Kontaktirajte nas", description: "Ovim putem možete kontaktirati naš tim koji će Vam odgovoriti u što kraćem roku" });
+        res.render('kontakt', { title: "Kontakt", description: "Ovim putem možete kontaktirati naš tim koji će Vam odgovoriti u što kraćem roku" });
     } catch (error) {
         res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
     }
@@ -183,7 +200,7 @@ app.get('/kontakt', (req, res) => {
 
 app.get('/uspjesanKontakt', (req, res) => {
     try {
-        res.render('uspjesanKontakt', { title: "Ludicrum - Poruka poslana", description: "Vaša poruka je uspješno poslana" });
+        res.render('uspjesanKontakt', { title: "Poruka poslana", description: "Vaša poruka je uspješno poslana" });
     } catch (error) {
         res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
     }
@@ -217,7 +234,7 @@ app.post("/kontakt", async (req, res) => {
 
 app.get('/objavi', (req, res) => {
     try {
-        res.render('objavi', { title: "Ludicrum - Objavite događaj", description: "Ovim putem jednostavno objavite Vaš događaj, koji će biti vidljiv u roku od 48 sati" });
+        res.render('objavi', { title: "Objavite događaj", description: "Ovim putem jednostavno objavite Vaš događaj, koji će biti vidljiv u roku od 48 sati" });
     } catch (error) {
         res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
     }
@@ -225,7 +242,7 @@ app.get('/objavi', (req, res) => {
 
 app.get('/uvjetiKoristenja', (req, res) => {
     try {
-        res.render('uvjetiKoristenja', { title: "Ludicrum - Uvjeti korištenja i pravila privatnosti", description: "Ludicrum Uvjeti korištenja i pravila privatnosti" });
+        res.render('uvjetiKoristenja', { title: "Uvjeti korištenja i pravila privatnosti", description: "Ludicrum Uvjeti korištenja i pravila privatnosti" });
     } catch (error) {
         res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
     }
@@ -233,7 +250,7 @@ app.get('/uvjetiKoristenja', (req, res) => {
 
 app.get('/uspjesnaObjava', (req, res) => {
     try {
-        res.render('uspjesnaObjava', { title: "Ludicrum - Uspješna objava", description: "Vaš događaj je uspješno objavljen i biti će vidljiv u roku od 48 sati" });
+        res.render('uspjesnaObjava', { title: "Uspješna objava", description: "Vaš događaj je uspješno objavljen i biti će vidljiv u roku od 48 sati" });
     } catch (error) {
         res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
     }
@@ -243,7 +260,11 @@ app.get('/dogadaji/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const dogadaj = await Event.findById(id);
-        res.render('detalji', { dogadaj, title: `Ludicrum - ${dogadaj.title}`, description: `${dogadaj.title}, ${dogadaj.city}, ${dogadaj.date}, ${dogadaj.category}, ${dogadaj.location} ` });
+        Event.findByIdAndUpdate(id, { $inc: { "viewNumber": 1 } }, function (err, doc) {
+            if (err) { throw err; }
+            else { console.log("Updated"); }
+        });
+        res.render('detalji', { dogadaj, title: `${dogadaj.title}`, description: `${dogadaj.title}, ${dogadaj.city}, ${dogadaj.date}, ${dogadaj.category}, ${dogadaj.location} ` });
     } catch (error) {
         res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
     }
@@ -251,7 +272,7 @@ app.get('/dogadaji/:id', async (req, res) => {
 
 app.all('*', (req, res) => {
     try {
-        res.render('stranicaNijePronadena', { title: "Ludicrum - Stranica ne postoji", description: "Nažalost ne možemo pronaći ovu stranicu u našoj bazi" });
+        res.render('stranicaNijePronadena', { title: "Stranica ne postoji", description: "Nažalost ne možemo pronaći ovu stranicu u našoj bazi" });
     } catch (error) {
         res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
     }
