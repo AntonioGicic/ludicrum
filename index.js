@@ -54,133 +54,29 @@ app.get('/', (req, res) => {
 });
 
 app.get('/dogadaji', async (req, res) => {
-    try {
-        const { date, city, category } = req.query;
-        if (!city && !date && !category) {
-            try {
-                const events = await Event.find({ published: 'true' }).sort('-datePublished').limit(10);
-                const eventNumber1 = await Event.count({ published: 'true' });
-                const eventNumber = "Ukupno objavljenih događaja: " + eventNumber1;
-                const text = "Najnoviji događaji";
-                const firstText = "Pretražite događaje prema mjestu, datumu i/ili kategoriji";
-                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
-            } catch (error) {
-                res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
-            }
-        } else if (city && date && category) {
-            try {
-                const stringDate = date.toString() + 'T00:00:00.000Z';
-                const events = await Event.find({
-                    published: 'true', city: city, category: category, dateStart: { $lte: stringDate }, dateEnd: { $gte: stringDate }
-                }).sort('-datePublished');
-                const eventNumber1 = await Event.count({
-                    published: 'true', city: city, category: category, dateStart: { $lte: stringDate }, dateEnd: { $gte: stringDate }
-                });
-                const eventNumber = "Pronađenih događaja: " + eventNumber1;
-                const firstText = "Pregled događaja prema zadanim filterima:";
-                const text = ""
-                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
-            } catch (error) {
-                res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
-            }
-        } else if (city && !date && !category) {
-            try {
-                const events = await Event.find({ published: 'true', city: city }).sort('-datePublished');
-                const eventNumber1 = await Event.count({ published: 'true', city: city });
-                const eventNumber = "Pronađenih događaja: " + eventNumber1;
-                const text = ""
-                const firstText = "Pregled događaja prema zadanim filterima:";
-                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
-            } catch (error) {
-                res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
-            }
-        } else if (!city && date && !category) {
-            try {
-                const stringDate = date.toString() + 'T00:00:00.000Z';
-                const events = await Event.find({
-                    published: 'true', dateStart: { $lte: stringDate }, dateEnd: { $gte: stringDate }
-                }).sort('-datePublished');
-                const eventNumber1 = await Event.count({
-                    published: 'true', dateStart: { $lte: stringDate }, dateEnd: { $gte: stringDate }
-                });
-                const eventNumber = "Pronađenih događaja: " + eventNumber1;
-                const text = "";
-                const firstText = "Pregled događaja prema zadanim filterima:";
-                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
-            } catch (error) {
-                res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
-            }
-        } else if (!city && !date && category) {
-            try {
-                const events = await Event.find({ published: 'true', category: category }).sort('-datePublished');
-                const eventNumber1 = await Event.count({ published: 'true', category: category });
-                const eventNumber = "Pronađenih događaja: " + eventNumber1;
-                const text = "";
-                const firstText = "Pregled događaja prema zadanim filterima:";
-                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
-            } catch (error) {
-                res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
-            }
-        } else if (city && date && !category) {
-            try {
-                const stringDate = date.toString() + 'T00:00:00.000Z';
-                const events = await Event.find({
-                    published: 'true', city: city, dateStart: { $lte: stringDate }, dateEnd: { $gte: stringDate }
-                }).sort('-datePublished');
-                const eventNumber1 = await Event.count({
-                    published: 'true', city: city, dateStart: { $lte: stringDate }, dateEnd: { $gte: stringDate }
-                });
-                const eventNumber = "Pronađenih događaja: " + eventNumber1;
-                const text = "";
-                const firstText = "Pregled događaja prema zadanim filterima:";
-                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
-            } catch (error) {
-                res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
-            }
-        } else if (city && !date && category) {
-            try {
-                const events = await Event.find({ published: 'true', city: city, category: category }).sort('-datePublished');
-                const eventNumber1 = await Event.count({ published: 'true', city: city, category: category });
-                const eventNumber = "Pronađenih događaja: " + eventNumber1;
-                const text = "";
-                const firstText = "Pregled događaja prema zadanim filterima:";
-                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
-            } catch (error) {
-                res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
-            }
-        } else if (!city && date && category) {
-            try {
-                const stringDate = date.toString() + 'T00:00:00.000Z';
-                const events = await Event.find({ published: 'true', dateStart: { $lte: stringDate }, dateEnd: { $gte: stringDate }, category: category }).sort('-datePublished');
-                const eventNumber1 = await Event.count({ published: 'true', dateStart: { $lte: stringDate }, dateEnd: { $gte: stringDate }, category: category });
-                const eventNumber = "Pronađenih događaja: " + eventNumber1;
-                const text = "";
-                const firstText = "Pregled događaja prema zadanim filterima:";
-                res.render('dogadaji', { events, text, firstText, eventNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji" });
-            } catch (error) {
-                res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
-            }
+    const { date, city, category } = req.query;
+    const query = {};
+    if ((date == "" || date == undefined) && (city == "" || city == undefined) && (category == "" || category == undefined)) {
+        const events = await Event.find({ published: 'true' }).sort('-datePublished').limit(10);
+        const eventsNumber = "Ukupno objavljenih događaja: " + await Event.count({ published: 'true' });
+        const text = "Posljednje objavljeni događaji";
+        res.render('dogadaji', { events, eventsNumber, text, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji", firstText: "Pretražite događaje prema mjestu, datumu i/ili kategoriji" })
+    } else {
+        if (date != "") {
+            query.dateStart = { $lte: date };
+            query.dateEnd = { $gte: date }
         }
-
-    } catch (error) {
-        res.send("Nažalost došlo je do pogreške, molimo pokušajte kasnije.", error);
+        else if (date == "") { query.dateEnd = { $exists: true } }
+        if (city != "") { query.city = city }
+        else if (city == "") { query.city = { $exists: true } }
+        if (category != "") { query.category = category }
+        else if (category == "") { query.category = { $exists: true } }
+        query.published = true;
+        const events = await Event.find(query);
+        const eventsNumber = "Pronađenih događaja: " + await Event.count(query);
+        res.render('dogadaji', { events, eventsNumber, title: "Pregledaj događaje u blizini", description: "Jednostavan pregled zabavnih događaja i filtriranje prema mjestu, datumu i/ili kategoriji", firstText: "Pregled događaja prema zadanim filterima:" })
     }
 });
-
-app.get('/dogadaji?sort=view', async (req, res) => {
-    const events = await Event.find({ published: 'true' }).sort('viewNumber').limit(10);
-    console.log(events);
-    res.json({ events: events });
-});
-
-
-
-
-
-
-
-
-
 
 app.get('/oNama', (req, res) => {
     try {
