@@ -56,8 +56,10 @@
                     Sortiraj prema:
                 </div>
                 <div class="d-flex flex-row justify-content-center">
-                    <a class="sorting-button m-3 text-center" href="#" id="sortByDate">DATUMU OBJAVE</a>
-                    <a class="sorting-button m-3 text-center" href="#" id="sortByNumber">BROJU PREGLEDA</a>
+                    <button onclick="sortByDate()" class="sorting-button m-3 text-center" id="sortByDate">DATUMU
+                        OBJAVE</button>
+                    <button onclick="sortByNumber()" class="sorting-button m-3 text-center" id="sortByNumber">BROJU
+                        PREGLEDA</button>
                 </div>
             </div>
             <!-- end of sorting -->
@@ -193,30 +195,16 @@
                                 }
                             </script>
                             <script type="text/javascript">
-                                const sortByDate = document.querySelector("#sortByDate");
-                                const sortByNumber = document.querySelector("#sortByNumber");
-                                sortByDate.addEventListener('click', () => {
-                                    if (sortByDate.classList.contains("sorting-disabled")) {
-                                        return
-                                    } else {
-                                        sortByDate.classList.add("sorting-disabled");
-                                        sortByNumber.classList.remove("sorting-disabled");
-                                        const currentUrl = window.location.href;
-                                        const createUrl = currentUrl + "?sort=date";
-                                        sortByDate.href = createUrl;
-                                    }
-                                });
-                                sortByNumber.addEventListener('click', () => {
-                                    if (sortByNumber.classList.contains("sorting-disabled")) {
-                                        return
-                                    } else {
-                                        sortByNumber.classList.add("sorting-disabled");
-                                        sortByDate.classList.remove("sorting-disabled");
-                                        const currentUrl = window.location.href;
-                                        const createUrl = currentUrl + "?sort=view";
-                                        sortByNumber.href = createUrl;
-                                    }
-                                });
+                                const sortByNumber = () => {
+                                    const currentUrl = window.URL;
+                                    console.log(currentUrl);
+                                    // $.getJSON("/items/123")//Don't forget the full API address!
+                                    //     .then(function (data) {
+                                    //         console.log(data);
+                                    //     });
+                                };
+
+
                             </script>
                             </body>
 
