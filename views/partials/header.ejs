@@ -2,15 +2,30 @@
 <html lang="hr-HR">
 
 <head>
-  <!-- Cookie Consent by FreePrivacyPolicy.com https://www.FreePrivacyPolicy.com -->
-  <script type="text/javascript" src="//www.freeprivacypolicy.com/public/cookie-consent/4.0.0/cookie-consent.js"
-    charset="UTF-8"></script>
-  <script type="text/javascript" charset="UTF-8">
-    document.addEventListener('DOMContentLoaded', function () {
-      cookieconsent.run({ "notice_banner_type": "simple", "consent_type": "express", "palette": "light", "language": "hr", "page_load_consent_levels": ["strictly-necessary"], "notice_banner_reject_button_hide": false, "preferences_center_close_button_hide": false, "page_refresh_confirmation_buttons": false, "website_name": "Ludicrum", "website_privacy_policy_url": "https://ludicrum.onrender.com/uvjetiKoristenja" });
-    });
+  <!-- cookie consent -->
+  <script type='text/javascript'>
+    window.onload = () => {
+      const firstVisitCookie = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('firstVisit='))
+        ?.split('=')[1];
+      if (!firstVisitCookie) {
+        const cookieShow = document.querySelector('#cookie');
+        cookieShow.style.visibility = 'visible';
+        const acceptCookiesBtn = document.getElementById("acceptCookiesBtn");
+        acceptCookiesBtn.addEventListener("click", acceptFunction)
+        function acceptFunction() {
+          const cookieShow = document.querySelector('#cookie');
+          cookieShow.style.visibility = 'hidden';
+          document.cookie = "firstVisit=false"
+        }
+      } else {
+        const cookieShow = document.querySelector('#cookie');
+        cookieShow.style.visibility = 'hidden';
+      }
+    }
   </script>
-
+  <!-- cookie consent -->
   <!-- Google analytics -->
   <script type="text/plain" cookie-consent="tracking" async
     src="https://www.googletagmanager.com/gtag/js?id=G-2ECY8LHW68"></script>
@@ -21,10 +36,6 @@
   gtag('config', 'G-2ECY8LHW68');
   </script>
   <!-- end of Google analytics-->
-
-  <noscript>Cookie Consent by <a href="https://www.freeprivacypolicy.com/" rel="noopener">Free Privacy Policy
-      Generator</a></noscript>
-  <!-- End Cookie Consent by FreePrivacyPolicy.com https://www.FreePrivacyPolicy.com -->
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,12 +62,26 @@
   <link rel="icon" href="/Logo.png" type="image/icon type">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/custom.css">
+  <script src="/js/jquery-3.6.1.js"></script>
 </head>
 
 <body>
-  <div
-    style="position: fixed; bottom: 0; right: 0; z-index:5000; background-color: rgb(28, 28, 28); margin: 2px; padding: 8px; border-radius: 5px;">
-    <a href="#" id="open_preferences_center"
-      style="color: whitesmoke; text-decoration: none; font-family: Arial, Helvetica, sans-serif;">Upravljanje
-      kolačićima</a>
+  <div class="cookie-background" id="cookie"
+    style="position: fixed; height: 100%; width: 100%; z-index: 2005; visibility: hidden;">
+    <div class="cookie-banner" style="font-family: Arial, Helvetica, sans-serif;">
+      <div class="cookie-head">
+        <img src="/cookie.svg" alt="cookie" style="height: 30px; margin-right: 10px;">
+        <h1 style="font-weight: bold; font-size: 20px; display: inline-block; padding: auto; margin-top: 4px;">Kolačići
+        </h1>
+      </div>
+      <p>
+        Ova web stranica koristi kolačiće (eng. cookies) i sličnu tehnologiju kako bi poboljšali Vaše iskustvo i mjerili
+        promet na našoj web stranici. Pritom Vas <b>NE</b> identificiramo. Korištenjem ove web stranice pristajete na
+        našu
+        upotrebu kolačića i naše <a href="/uvjetiKoristenja" style="text-decoration: none; color: #1bae70">Uvjete
+          korištenja i pravila
+          privatnosti</a>.
+      </p>
+      <button class="btn-cookie-accept" id="acceptCookiesBtn">Prihvaćam</button>
+    </div>
   </div>

@@ -1,5 +1,3 @@
-// const { _keyEvent } = require("popups");
-
 // Start of disabling form submissions if there are invalid fields
 (function () {
     'use strict'
@@ -57,3 +55,4 @@ const shareToFB = document.getElementById('publishA');
 const thisUrl = window.location.href;
 shareToFB.href = "https://www.facebook.com/share.php?u=" + thisUrl;
 // end of share to facebook
+
